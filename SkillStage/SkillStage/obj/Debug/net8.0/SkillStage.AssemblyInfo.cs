@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SkillStage")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d03b6e9f196317a20534033b59cc8294782d346f")]
 [assembly: System.Reflection.AssemblyProductAttribute("SkillStage")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SkillStage")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

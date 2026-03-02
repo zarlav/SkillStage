@@ -1,4 +1,5 @@
 ﻿using MongoDB.Driver;
+using SkillStage.Domain;
 
 namespace SkillStage.Service
 {
@@ -16,6 +17,10 @@ namespace SkillStage.Service
             var mongoClient = new MongoClient(mongoUrl);
             _database = mongoClient.GetDatabase(mongoUrl.DatabaseName);
         }
+
         public IMongoDatabase? Database => _database;
+
+        public IMongoCollection<Comment> Comments => _database.GetCollection<Comment>("comments");
+        public IMongoCollection<Rating> Ratings => _database.GetCollection<Rating>("ratings");
     }
 }
