@@ -17,6 +17,26 @@ namespace SkillStage.Service
             _mongoService = mongoService;
         }
 
+       
+        public async Task CreatePostAsync(Post post)
+        {
+            await _mongoService.Posts.InsertOneAsync(post);
+        }
+
+        
+        public async Task<IEnumerable<Post>> GetAllPostsAsync(PostType? type)
+        {
+            var filter = type.HasValue 
+                ? Builders<Post>.Filter.Eq(p => p.Type, type.Value) 
+                : Builders<Post>.Filter.Empty;
+
+            return await _mongoService.Posts
+                .Find(filter)
+                .SortByDescending(p => p.CreatedAt)
+                .ToListAsync();
+        }
+
+       
         public async Task AddCommentAsync(CommentDTO dto, string userId)
         {
             var comment = new Comment
@@ -58,5 +78,22 @@ namespace SkillStage.Service
 
             return ratings.Average(r => r.Value);
         }
+
+        public async Task<Post?> GetPostByIdAsync(string id)
+{
+    return await _mongoService.Posts.Find(p => p.Id == id).FirstOrDefaultAsync();
+}
+
+public async Task UpdatePostAsync(string id, Post updatedPost)
+{
+    
+    await _mongoService.Posts.ReplaceOneAsync(p => p.Id == id, updatedPost);
+}
+
+public async Task DeletePostAsync(string id)
+{
+    
+    await _mongoService.Posts.DeleteOneAsync(p => p.Id == id);
+}
     }
 }

@@ -6,7 +6,7 @@ namespace SkillStage.Service
     public class MongoDbService
     {
         private readonly IConfiguration _configuration;
-        private readonly IMongoDatabase? _database;
+        private readonly IMongoDatabase _database; 
 
         public MongoDbService(IConfiguration configuration)
         {
@@ -18,8 +18,13 @@ namespace SkillStage.Service
             _database = mongoClient.GetDatabase(mongoUrl.DatabaseName);
         }
 
-        public IMongoDatabase? Database => _database;
+        public IMongoDatabase Database => _database;
 
+      
+        public IMongoCollection<User> Users => _database.GetCollection<User>("user");
+        public IMongoCollection<Post> Posts => _database.GetCollection<Post>("post");
+
+        
         public IMongoCollection<Comment> Comments => _database.GetCollection<Comment>("comments");
         public IMongoCollection<Rating> Ratings => _database.GetCollection<Rating>("ratings");
     }

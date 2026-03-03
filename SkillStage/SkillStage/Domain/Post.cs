@@ -19,6 +19,9 @@ namespace SkillStage.Domain
         [BsonElement("title")]
         public string Title { get; set; } = null!;
 
+        [BsonElement("imageUrl")]
+        public string? ImageUrl { get; set; } // opciono,za linkove ka slikama/muzici
+
         [BsonElement("content")]
         public string Content { get; set; } = null!;
         // crtez -> URL slike
