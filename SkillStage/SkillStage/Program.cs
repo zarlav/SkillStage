@@ -39,7 +39,7 @@ builder.Services.AddSwaggerGen(opt =>
     opt.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
     {
         In = Microsoft.OpenApi.Models.ParameterLocation.Header,
-        Description = "Unesite 'Bearer' [razmak] i vaš token. Primer: 'Bearer 12345abcdef'",
+        Description = "Unesite 'Bearer' [razmak] i vas token.",
         Name = "Authorization",
         Type = Microsoft.OpenApi.Models.SecuritySchemeType.ApiKey,
         BearerFormat = "JWT",

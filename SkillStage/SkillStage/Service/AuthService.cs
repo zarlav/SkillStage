@@ -32,7 +32,7 @@ namespace SkillStage.Service
             };
 
             await _userService.CreateAsync(user);
-            return "Registracija uspešna";
+            return "Registracija uspesna";
         }
 
         public async Task<string> Login(LoginDTO loginDto)
@@ -40,7 +40,7 @@ namespace SkillStage.Service
             var user = await _userService.GetByUsernameAsync(loginDto.UserName);
 
             if (user == null || user.Password != loginDto.Password)
-                throw new Exception("Pogrešno korisničko ime ili lozinka");
+                throw new Exception("Pogresno korisnicko ime ili lozinka");
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_configuration.GetSection("AppSettings:Token").Value!);
