@@ -71,8 +71,20 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 
 
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy
+            .WithOrigins("http://localhost:5173", "http://127.0.0.1:5173")
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
+});
 
 var app = builder.Build();
+app.UseCors("AllowFrontend");
 
 
 if (app.Environment.IsDevelopment())

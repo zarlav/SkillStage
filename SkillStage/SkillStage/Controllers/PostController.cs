@@ -66,7 +66,6 @@ namespace SkillStage.Controllers
             var average = await _postService.GetAverageRatingAsync(postId);
             return new OkObjectResult(new { averageRating = average });
         }
-        // Kreiranje posta
         [HttpPost]
         public async Task<IActionResult> CreatePost([FromBody] PostCreateDTO dto)
         {
@@ -80,14 +79,13 @@ namespace SkillStage.Controllers
                 Content = dto.Content,
                 Type = (PostType)dto.Type,
                 ImageUrl = dto.ImageUrl,
+                MusicUrl = dto.MusicUrl,
                 CreatedAt = DateTime.UtcNow
             };
 
             await _postService.CreatePostAsync(post); 
-            return new OkObjectResult(new { message = "Objava je uspešno kreirana", postId = post.Id });
+            return new OkObjectResult(new { message = "Objava je uspesno kreirana", postId = post.Id });
         }
-
-        //Dobavljanje svih postova sa opcionim filtriranjem po tipu
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> GetAllPosts([FromQuery] PostType? type)
@@ -100,11 +98,10 @@ namespace SkillStage.Controllers
        [HttpPut("{id}")]
 public async Task<IActionResult> UpdatePost(string id, PostCreateDTO dto)
 {
-    // Koristimo ClaimsPrincipal za izvlačenje ID-a
     var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
     var post = await _postService.GetPostByIdAsync(id);
 
-    if (post == null) return NotFound("Post nije pronađen.");
+    if (post == null) return NotFound("Post nije pronadjen.");
     
     if (post.UserId != userId) return Forbid();
 
@@ -112,8 +109,9 @@ public async Task<IActionResult> UpdatePost(string id, PostCreateDTO dto)
     post.Content = dto.Content;
     
     
-    post.Type = (PostType)dto.Type; 
-    
+    post.Type = (PostType)dto.Type;
+
+    post.MusicUrl = dto.MusicUrl;
     post.ImageUrl = dto.ImageUrl;
 
     await _postService.UpdatePostAsync(id, post);
@@ -130,7 +128,7 @@ public async Task<IActionResult> DeletePost(string id)
     if (post.UserId != userId) return Forbid();
 
     await _postService.DeletePostAsync(id);
-    return Ok(new { message = "Post uspešno obrisan" });
+    return Ok(new { message = "Post je uspesno obrisan" });
 }
  
    [HttpGet("User/{userId}")]

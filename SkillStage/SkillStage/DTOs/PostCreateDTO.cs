@@ -6,5 +6,6 @@
         public string Content { get; set; } = null!;
         public int Type { get; set; }
         public string? ImageUrl { get; set; }
+        public string? MusicUrl { get; set; }
     }
 }

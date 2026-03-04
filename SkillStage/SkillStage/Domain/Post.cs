@@ -20,13 +20,14 @@ namespace SkillStage.Domain
         public string Title { get; set; } = null!;
 
         [BsonElement("imageUrl")]
-        public string? ImageUrl { get; set; } // opciono,za linkove ka slikama/muzici
+        public string? ImageUrl { get; set; }
+
+        [BsonElement("musicUrl")]
+        public string? MusicUrl { get; set; }
 
         [BsonElement("content")]
         public string Content { get; set; } = null!;
-        // crtez -> URL slike
-        // citat -> tekst
-        // muzika -> link
+
 
         [BsonElement("createdAt")]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

@@ -131,3 +131,11 @@ C:\Users\Nadja\Desktop\SkillStage\skillstage\skillstage\skillstage\obj\Debug\net
 C:\Users\Nadja\Desktop\SkillStage\skillstage\skillstage\skillstage\obj\Debug\net8.0\SkillStage.pdb
 C:\Users\Nadja\Desktop\SkillStage\skillstage\skillstage\skillstage\obj\Debug\net8.0\SkillStage.genruntimeconfig.cache
 C:\Users\Nadja\Desktop\SkillStage\skillstage\skillstage\skillstage\obj\Debug\net8.0\ref\SkillStage.dll
+C:\Users\Lazar\source\repos\SkillStage\SkillStage\SkillStage\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Lazar\source\repos\SkillStage\SkillStage\SkillStage\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Lazar\source\repos\SkillStage\SkillStage\SkillStage\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Lazar\source\repos\SkillStage\SkillStage\SkillStage\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Lazar\source\repos\SkillStage\SkillStage\SkillStage\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Lazar\source\repos\SkillStage\SkillStage\SkillStage\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Lazar\source\repos\SkillStage\SkillStage\SkillStage\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Lazar\source\repos\SkillStage\SkillStage\SkillStage\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll

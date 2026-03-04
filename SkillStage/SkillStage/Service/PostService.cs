@@ -23,12 +23,15 @@ namespace SkillStage.Service
             await _mongoService.Posts.InsertOneAsync(post);
         }
 
-        
+
         public async Task<IEnumerable<Post>> GetAllPostsAsync(PostType? type)
         {
-            var filter = type.HasValue 
-                ? Builders<Post>.Filter.Eq(p => p.Type, type.Value) 
-                : Builders<Post>.Filter.Empty;
+            var filter = Builders<Post>.Filter.Empty;
+
+            if (type.HasValue)
+            {
+                filter = Builders<Post>.Filter.Eq(p => p.Type, type.Value);
+            }
 
             return await _mongoService.Posts
                 .Find(filter)
@@ -36,7 +39,7 @@ namespace SkillStage.Service
                 .ToListAsync();
         }
 
-       
+
         public async Task AddCommentAsync(CommentDTO dto, string userId)
         {
             var comment = new Comment
